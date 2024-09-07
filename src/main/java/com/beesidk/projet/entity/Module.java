@@ -7,28 +7,18 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.time.LocalDateTime;
-
+@Document("module")
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-@Data
-@Document("inscription")
-public class Inscription {
+public class Module {
+
 
     @Id
     String id;
-    String statut;
-    double progress;
-    LocalDateTime dateInscription;
 
-    @DBRef
-    AppUser user;
-
-    @DBRef
-    Cour cour;
 
 }

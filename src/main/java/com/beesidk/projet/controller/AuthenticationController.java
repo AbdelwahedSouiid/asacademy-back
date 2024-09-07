@@ -15,6 +15,7 @@ import org.springframework.security.oauth2.jwt.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import javax.sound.midi.SysexMessage;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.Collection;
@@ -33,11 +34,16 @@ public class AuthenticationController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<Map<String, String>> login(String username, String password) {
-        String grantType = "password";
-        boolean withRefreshToken = true;
-        String refreshToken = null;
-        return authenticationService.authenticate(grantType, refreshToken, username, password, withRefreshToken);
+    public ResponseEntity<Map<String, String>> login(String username, String password, Boolean withRefreshToken) {
+
+        return authenticationService.login(username, password, withRefreshToken);
     }
+
+    @PostMapping("/refreshToken")
+    public ResponseEntity<Map<String, String>> login(String refreshToken) {
+        System.out.println(refreshToken);
+        return authenticationService.refreshAccessToken(refreshToken);
+    }
+
 
 }

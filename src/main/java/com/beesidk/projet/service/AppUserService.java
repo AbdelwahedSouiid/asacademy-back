@@ -3,6 +3,7 @@ package com.beesidk.projet.service;
 
 import com.beesidk.projet.entity.AppRole;
 import com.beesidk.projet.entity.AppUser;
+import com.beesidk.projet.interfaces.IService;
 import com.beesidk.projet.repository.AppUserRepository;
 import com.beesidk.projet.repository.RoleRepository;
 import lombok.AllArgsConstructor;
@@ -39,7 +40,7 @@ public class AppUserService implements IService<AppUser> {
         appUser.setPassword(passwordEncoder.encode(appUser.getPassword()));
 
         // Assigner le rôle ADMIN par défaut
-        Optional<AppRole> role = roleRepo.findByName("ADMIN");
+        Optional<AppRole> role = roleRepo.findByName("USER");
         List<AppRole> roles = new ArrayList<>();
         roles.add(role.orElseThrow(() -> new RuntimeException("Role ADMIN not found")));
         appUser.setRoles(roles);
@@ -58,4 +59,8 @@ public class AppUserService implements IService<AppUser> {
         return repo.save(AppUser);
     }
 
+    public AppUser retrieveByEmail(String userEmail) {
+        AppUser user = repo.findByEmail(userEmail).orElse(null);
+        return user;
+    }
 }

@@ -10,25 +10,19 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
+@Document("tag")
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-@Data
-@Document("inscription")
-public class Inscription {
+public class Tag {
 
     @Id
-    String id;
-    String statut;
-    double progress;
-    LocalDateTime dateInscription;
-
-    @DBRef
-    AppUser user;
-
-    @DBRef
-    Cour cour;
+    private String id;
+    private String name;
+    private String description;
 
 }

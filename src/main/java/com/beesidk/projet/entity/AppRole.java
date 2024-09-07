@@ -1,6 +1,7 @@
 package com.beesidk.projet.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -23,6 +24,7 @@ public class AppRole {
     String id;
     String name;
 
-    @DBRef
+    @DBRef(lazy = true)
+    @JsonIgnore
     List<AppUser> users;
 }

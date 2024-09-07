@@ -23,7 +23,10 @@ public class Categorie {
     String id;
     String nom;
     String description;
+    String image;
 
-    @DBRef
+    @DBRef(lazy = true)
     List<Cour> cours;
+
+
 }

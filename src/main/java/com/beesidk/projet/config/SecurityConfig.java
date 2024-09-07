@@ -1,6 +1,5 @@
 package com.beesidk.projet.config;
 
-
 import com.beesidk.projet.service.UserDetailServiceImp;
 import com.nimbusds.jose.jwk.JWK;
 import com.nimbusds.jose.jwk.JWKSet;
@@ -71,7 +70,10 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .cors(Customizer.withDefaults())
                 .authorizeRequests(auth -> auth
-                        .requestMatchers("/login/**", "/projet/swagger-ui/**", "/").permitAll()
+                        .requestMatchers("/login/**", "/refreshToken", "/swagger-ui/**", "/AppUser/**",
+                                "/cour/retrieve**/**", "/cour/search/**", "/categorie/retrieve**/**", "/load/**", "/formateur/retrieve**/**",
+                                "/upload/**", "/blog/retrieve**/**", "/video/retrieve**/**", "video/search/**", "/tag/retrieve**/**")
+                        .permitAll()
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))

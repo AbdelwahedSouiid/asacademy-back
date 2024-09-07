@@ -1,8 +1,6 @@
 package com.beesidk.projet.entity;
 
 
-import com.beesidk.projet.enums.PaiementType;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -12,44 +10,40 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
-
 import java.util.ArrayList;
 import java.util.List;
 
-@Document("cour")
+@Document("video")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Cour {
-
+public class Video {
     @Id
     String id;
-    String name;
-    String video;
-    String affiche;
+    String titre;
     String description;
+    String videoUrl;
+    String thumbnailUrl;
+    Long vues = 0L;
     int duree;
-    float prix;
+    int nbreLike = 0;
+    int nbreDisLike = 0;
 
-    LocalDateTime dateCreation;
-    PaiementType paiement;
+    LocalDateTime dateAjout;
 
     @DBRef
-    Categorie categorie;
+    List<Tag> tags = new ArrayList<>();
+
+    @DBRef
+    List<Avis> listAvis = new ArrayList<>();
 
     @DBRef
     Formateur formateur;
 
-    @DBRef(lazy = true)
-    @JsonIgnore
-    List<Inscription> inscriptions = new ArrayList<>();
+    @DBRef
+    Categorie categorie;
 
-    @DBRef(lazy = true)
-    List<Tag> tags = new ArrayList<>();
-
-    @DBRef(lazy = true)
-    @JsonIgnore
-    List<Avis> avis = new ArrayList<>();
 }

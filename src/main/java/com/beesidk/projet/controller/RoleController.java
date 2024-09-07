@@ -2,8 +2,7 @@ package com.beesidk.projet.controller;
 
 
 import com.beesidk.projet.entity.AppRole;
-import com.beesidk.projet.entity.AppRole;
-import com.beesidk.projet.service.IService;
+import com.beesidk.projet.interfaces.IService;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;

@@ -1,35 +1,34 @@
 package com.beesidk.projet.service;
 
-
-import com.beesidk.projet.entity.AppRole;
+import com.beesidk.projet.entity.Formateur;
 import com.beesidk.projet.interfaces.IService;
-import com.beesidk.projet.repository.RoleRepository;
+import com.beesidk.projet.repository.FormateurRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+
 @Service
 @AllArgsConstructor
-public class RoleService implements IService<AppRole> {
+public class FormateurService implements IService<Formateur> {
 
-    private RoleRepository repo;
-
+    FormateurRepository repo;
 
     @Override
-    public List<AppRole> retrieveAll() {
+    public List<Formateur> retrieveAll() {
         return repo.findAll();
     }
 
     @Override
-    public AppRole retrieve(String id) {
+    public Formateur retrieve(String id) {
         return repo.findById(id).orElse(null);
     }
 
 
     @Override
-    public AppRole add(AppRole AppRole) {
-        return repo.save(AppRole);
+    public Formateur add(Formateur Formateur) {
+        return repo.save(Formateur);
     }
 
     @Override
@@ -38,8 +37,7 @@ public class RoleService implements IService<AppRole> {
     }
 
     @Override
-    public AppRole modify(AppRole AppRole) {
-        return repo.save(AppRole);
+    public Formateur modify(Formateur Formateur) {
+        return repo.save(Formateur);
     }
-
 }

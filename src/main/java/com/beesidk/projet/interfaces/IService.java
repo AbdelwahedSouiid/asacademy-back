@@ -1,4 +1,4 @@
-package com.beesidk.projet.service;
+package com.beesidk.projet.interfaces;
 
 import java.util.List;
 
@@ -14,5 +14,6 @@ public interface IService<T> {
     public void remove(String id);
 
     public T modify(T t);
+
 }
 
