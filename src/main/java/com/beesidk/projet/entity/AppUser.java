@@ -3,12 +3,9 @@ package com.beesidk.projet.entity;
 
 import com.beesidk.projet.enums.Genre;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+
+import lombok.*;
 import lombok.experimental.FieldDefaults;
-import org.apache.commons.lang3.builder.ToStringExclude;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -38,11 +35,11 @@ public class AppUser {
 
     @DBRef(lazy = true)
     @JsonIgnore
-    @ToStringExclude
+    @ToString.Exclude
     List<Inscription> inscriptions = new ArrayList<>();
 
     @DBRef(lazy = true)
     @JsonIgnore
-    @ToStringExclude
+    @ToString.Exclude
     List<Avis> avis = new ArrayList<>();
 }

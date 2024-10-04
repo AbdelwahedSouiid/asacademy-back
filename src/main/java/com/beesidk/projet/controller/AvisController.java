@@ -3,7 +3,7 @@ package com.beesidk.projet.controller;
 
 import com.beesidk.projet.entity.Avis;
 
-import com.beesidk.projet.entity.Cour;
+
 import com.beesidk.projet.service.AvisService;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.AllArgsConstructor;
