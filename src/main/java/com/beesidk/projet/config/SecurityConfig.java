@@ -1,6 +1,6 @@
 package com.beesidk.projet.config;
 
-import com.beesidk.projet.service.UserDetailServiceImp;
+import com.beesidk.projet.service.securityService.UserDetailServiceImp;
 import com.nimbusds.jose.jwk.JWK;
 import com.nimbusds.jose.jwk.JWKSet;
 import com.nimbusds.jose.jwk.RSAKey;
@@ -31,7 +31,6 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
-import java.util.List;
 
 @Configuration
 @EnableWebSecurity
@@ -42,7 +41,7 @@ public class SecurityConfig {
     private PasswordEncoder passwordEncoder;
     private UserDetailServiceImp userDetailsService;
 
-    public SecurityConfig(RsakeysConfig rsakeysConfig, PasswordEncoder passwordEncoder, UserDetailServiceImp userDetailsService, UserDetailServiceImp userDetailsService1) {
+    public SecurityConfig(RsakeysConfig rsakeysConfig, PasswordEncoder passwordEncoder, UserDetailServiceImp userDetailsService1) {
         this.rsakeysConfig = rsakeysConfig;
         this.passwordEncoder = passwordEncoder;
         this.userDetailsService = userDetailsService1;
@@ -70,11 +69,12 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .cors(Customizer.withDefaults())
                 .authorizeRequests(auth -> auth
-                        .requestMatchers("/login/**", "/refreshToken", "/swagger-ui/**", "/AppUser/**",
-                                "/cour/retrieve**/**", "/cour/search/**", "/categorie/retrieve**/**", "/load/**", "/formateur/retrieve**/**",
-                                "/upload/**", "/blog/retrieve**/**", "/video/retrieve**/**", "video/search/**", "/tag/retrieve**/**")
-                        .permitAll()
-                        .anyRequest().authenticated()
+                                //.requestMatchers("/login/**", "/refreshToken", "/swagger-ui/**", "/AppUser/**",
+                                //      "/cour/retrieve**/**", "/cour/search/**", "/categorie/retrieve**/**", "/load/**", "/formateur/retrieve**/**",
+                                //     "/upload/**", "/blog/retrieve**/**", "/video/retrieve**/**", "video/search/**", "/tag/retrieve**/**")
+                                .anyRequest()
+                                .permitAll()
+                        // .authenticated()
                 )
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .httpBasic(Customizer.withDefaults())
@@ -102,7 +102,6 @@ public class SecurityConfig {
         configuration.addAllowedOrigin("*");
         configuration.addAllowedHeader("*");
         configuration.addAllowedMethod("*");
-        //configuration.setExposedHeaders(List.of("x-auth-token"));
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
         return source;

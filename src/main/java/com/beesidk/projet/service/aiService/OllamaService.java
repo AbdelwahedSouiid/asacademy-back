@@ -1,4 +1,4 @@
-package com.beesidk.projet.service;
+package com.beesidk.projet.service.aiService;
 
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.prompt.Prompt;
@@ -15,7 +15,6 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-
 public class OllamaService {
     private VectorStore vectorStore;
     private ChatClient chatClient;

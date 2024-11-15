@@ -1,4 +1,4 @@
-package com.beesidk.projet.service;
+package com.beesidk.projet.service.securityService;
 
 
 import com.beesidk.projet.entity.AppUser;

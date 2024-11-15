@@ -1,12 +1,10 @@
 package com.beesidk.projet.controller;
 
 
-import com.beesidk.projet.entity.Inscription;
 import com.beesidk.projet.entity.Message;
 import com.beesidk.projet.service.MessageService;
-import com.beesidk.projet.service.OllamaService;
+import com.beesidk.projet.service.aiService.OllamaService;
 import lombok.AllArgsConstructor;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

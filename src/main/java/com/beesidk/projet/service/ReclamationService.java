@@ -3,6 +3,7 @@ package com.beesidk.projet.service;
 import com.beesidk.projet.entity.Reclamation;
 import com.beesidk.projet.interfaces.IService;
 import com.beesidk.projet.repository.ReclamationRepository;
+import com.beesidk.projet.service.aiService.SpamDetectionService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 public class ReclamationService implements IService<Reclamation> {
     private ReclamationRepository repo;
-    private FastApiService fastApiService;
+    private SpamDetectionService fastApiService;
 
     @Override
     public List<Reclamation> retrieveAll() {

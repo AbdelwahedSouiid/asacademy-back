@@ -22,10 +22,10 @@ import java.util.List;
 
 @Component
 public class RagDataLoader {
-    @Value("classpath:/pdfs/risk.pdf")
+    @Value("classpath:/pdfs/SiteInformation.pdf")
     public Resource pdfResource;
 
-    @Value("store-data-v2.json")
+    @Value("store-data.json")
     private String storeFile;
 
     @Bean
